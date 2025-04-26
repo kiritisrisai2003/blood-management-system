@@ -3,6 +3,11 @@ from app import app, db
 from app.models import User
 from email.message import EmailMessage
 
+db.create_all()
+
+        # Create the admin account (only if it doesn't exist)
+
+
 
 
 
