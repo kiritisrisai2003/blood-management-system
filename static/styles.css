@@ -1,0 +1,240 @@
+/* =========================================
+   Variables
+========================================= */
+:root {
+    --primary-color: #FF5733; /* Vibrant red-orange */
+    --primary-hover: #C7432F; /* Darker shade */
+    --secondary-color: #3498db; /* Bright blue */
+    --text-color: #2C3E50; /* Darker text for better contrast */
+    --background-color: #ECF0F1; /* Soft light grey */
+    --box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15); /* Softer, deeper shadow */
+    --border-radius: 16px; /* More rounded corners */
+    --font-family: 'Poppins', sans-serif;
+    --transition-speed: 0.3s;
+    --padding: 2rem;
+}
+
+/* =========================================
+   General Styles
+========================================= */
+body {
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    line-height: 1.7;
+}
+
+h1 {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: var(--padding);
+    font-size: 3rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Added text shadow for better visibility */
+}
+
+/* =========================================
+   Header
+========================================= */
+header {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color)); /* Gradient header */
+    color: white;
+    padding: var(--padding);
+    box-shadow: var(--box-shadow);
+}
+
+.header__nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.header__nav-link {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.2rem;
+    transition: color var(--transition-speed);
+}
+
+.header__nav-link:hover {
+    color: var(--primary-hover);
+}
+
+/* =========================================
+   Main Content
+========================================= */
+main {
+    padding: var(--padding);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* =========================================
+   Form Styles
+========================================= */
+.form {
+    background: #ffffff;
+    padding: calc(var(--padding) * 1.8);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    max-width: 600px;
+    margin: 0 auto;
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.form:hover {
+    transform: translateY(-5px); /* Subtle hover effect */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+.form__group {
+    margin-bottom: var(--padding);
+}
+
+.form__label {
+    display: block;
+    margin-bottom: 0.6rem;
+    font-weight: 600;
+    color: #444;
+}
+
+.form__input {
+    width: 100%;
+    padding: 1.2rem;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.form__input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 5px var(--primary-color); /* Glow effect on focus */
+}
+
+.form__submit {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1.2rem 2.5rem;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color var(--transition-speed), transform var(--transition-speed);
+}
+
+.form__submit:hover {
+    background-color: var(--primary-hover);
+    transform: scale(1.05); /* Slight zoom effect */
+}
+
+/* =========================================
+   Table Styles
+========================================= */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: var(--padding);
+    background: white;
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.table__header,
+.table__row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    align-items: center;
+    padding: 1.25rem;
+}
+
+.table__header {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.table__cell {
+    padding: 1.25rem;
+    border-bottom: 1px solid #ddd;
+}
+
+.table__row:hover {
+    background-color: #f8f8f8;
+    transform: scale(1.02); /* Hover zoom effect */
+    transition: transform var(--transition-speed);
+}
+
+/* =========================================
+   Buttons
+========================================= */
+.button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.85rem 1.8rem;
+    border: none;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color var(--transition-speed), transform var(--transition-speed);
+}
+
+.button:hover {
+    background-color: var(--primary-hover);
+    transform: scale(1.05);
+}
+
+/* =========================================
+   Flash Messages
+========================================= */
+.flashes {
+    list-style: none;
+    padding: 0;
+    margin: var(--padding) 0;
+}
+
+.flashes__item {
+    background-color: var(--secondary-color);
+    color: #fff;
+    padding: 1.2rem;
+    margin-bottom: 1.5rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+    font-weight: 600;
+}
+
+/* =========================================
+   Responsive Design
+========================================= */
+@media (max-width: 768px) {
+    .header__nav {
+        flex-direction: column;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .form {
+        padding: var(--padding);
+    }
+
+    .table {
+        font-size: 0.9rem;
+    }
+
+    .table__header,
+    .table__row {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+}

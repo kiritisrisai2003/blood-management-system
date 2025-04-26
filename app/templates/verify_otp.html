@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Enter OTP</h1>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <p>{{ form.otp.label }}<br> {{ form.otp(size=6) }}</p>
+        <p><button type="submit">Verify OTP</button></p>
+    </form>
+
+    {% for category, message in get_flashed_messages(with_categories=True) %}
+        <div class="alert alert-{{ category }}">{{ message }}</div>
+    {% endfor %}
+{% endblock %}

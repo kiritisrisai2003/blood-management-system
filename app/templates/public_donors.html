@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Public Donors</h1>
+    <p>Select a blood group to view available donors.</p>
+
+    <!-- Blood Group Selection Form -->
+    <form method="POST">
+        <label for="blood_group">Select Blood Group:</label>
+        <select name="blood_group" id="blood_group" required>
+            <option value="">-- Select Blood Group --</option>
+            {% for blood_group in blood_groups %}
+                <option value="{{ blood_group }}" {% if selected_blood_group == blood_group %}selected{% endif %}>
+                    {{ blood_group }}
+                </option>
+            {% endfor %}
+        </select>
+        <button type="submit" class="button">Search</button>
+    </form>
+
+    <!-- Display Donors List -->
+    {% if selected_blood_group %}
+        <h2>Donors with Blood Group: {{ selected_blood_group }}</h2>
+        {% if donors_list %}
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Phone Number</th>
+                </tr>
+                {% for donor in donors_list %}
+                    <tr>
+                        <td>{{ donor.username }}</td>
+                        <td>{{ donor.phone_number }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <p>No donors found for this blood group.</p>
+        {% endif %}
+    {% endif %}
+{% endblock %}

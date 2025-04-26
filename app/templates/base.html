@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} - Blood Donor System</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: white;
+            background: url("https://healthjade.com/wp-content/uploads/2017/09/red-blood-cells.jpg") no-repeat center center/cover;
+            background-attachment: fixed;
+            text-align: center;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 10px 0;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 8px 12px;
+            transition: background 0.3s ease-in-out;
+        }
+
+        nav ul li a:hover {
+            background: rgba(255, 0, 0, 0.7);
+            border-radius: 5px;
+        }
+
+        /* Flash Messages */
+        .flashes {
+            list-style: none;
+            padding: 10px;
+            max-width: 600px;
+            margin: 20px auto;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 8px;
+        }
+
+        /* Quote Styling */
+        .quote {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 15px;
+            border-radius: 10px;
+            max-width: 700px;
+            margin: 30px auto;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+
+            .quote {
+                font-size: 1.5rem;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('public_donors') }}">Donors</a></li>
+                <li><a href="{{ url_for('public_donors') }}">View Donors</a></li>
+                <li><a href="{{ url_for('request_blood') }}">Request Blood</a></li>
+
+                {% if current_user.is_authenticated %}
+                    <li><a href="{{ url_for('donors') }}">My Donors</a></li>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('login') }}">Login</a></li>
+                    <li><a href="{{ url_for('register') }}">Register</a></li>
+                {% endif %}
+
+                {% if current_user.username == 'admin' %}
+                    <li><a href="{{ url_for('admin') }}">Admin Panel</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="flashes">
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
+        <!-- Inspirational Quote -->
+        <div class="quote">
+            <p>"You cannot donate your life, but you can donate blood."</p>
+        </div>
+
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

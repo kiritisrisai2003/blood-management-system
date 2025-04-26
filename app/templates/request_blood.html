@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="container">
+        <h1>Request Blood</h1>
+        <form method="POST" class="blood-request-form">
+            <div>
+                <label for="blood_group">Select Blood Group:</label>
+                <div class="blood-group-options">
+                    <label class="blood-group-option">
+                        <input type="radio" name="blood_group" value="A+" required>
+                        <span>A+</span>
+                    </label>
+                    <label class="blood-group-option">
+                        <input type="radio" name="blood_group" value="A-">
+                        <span>A-</span>
+                    </label>
+                    <label class="blood-group-option">
+                        <input type="radio" name="blood_group" value="B+">
+                        <span>B+</span>
+                    </label>
+                    <label class="blood-group-option">
+                        <input type="radio" name="blood_group" value="B-">
+                        <span>B-</span>
+                    </label>
+                    <label class="blood-group-option">
+                        <input type="radio" name="blood_group" value="O+">
+                        <span>O+</span>
+                    </label>
+                    <label class="blood-group-option">
+                        <input type="radio" name="blood_group" value="O-">
+                        <span>O-</span>
+                    </label>
+                    <label class="blood-group-option">
+                        <input type="radio" name="blood_group" value="AB+">
+                        <span>AB+</span>
+                    </label>
+                    <label class="blood-group-option">
+                        <input type="radio" name="blood_group" value="AB-">
+                        <span>AB-</span>
+                    </label>
+                </div>
+            </div>
+            <div>
+                <label for="message">Message:</label>
+                <textarea name="message" id="message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Request</button>
+        </form>
+    </div>
+
+    <style>
+        /* Background Styling */
+        body {
+            background: linear-gradient(to right, #ff4e50, #fc913a);
+            font-family: Arial, sans-serif;
+        }
+
+        /* Centering the Form */
+        .container {
+            width: 50%;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        h1 {
+            color: #d32f2f;
+        }
+
+        /* Blood Group Options */
+        .blood-group-options {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .blood-group-option {
+            width: 80%;
+            padding: 12px;
+            border: 2px solid #d32f2f;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            background-color: #ff6666;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .blood-group-option input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        /* Highlight Selected Option */
+        .blood-group-option input:checked + span {
+            background-color: #ff0000;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .blood-group-option:hover {
+            background-color: #ff3333;
+        }
+
+        /* Textarea Styling */
+        textarea {
+            width: 90%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        /* Submit Button */
+        .submit-btn {
+            background: #d32f2f;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #b71c1c;
+        }
+    </style>
+ {% endblock %}
+
